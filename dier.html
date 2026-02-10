@@ -127,7 +127,7 @@
             })
         }
         const run = async () => {
-            const text = '3，2，1，HI,奚sir，祝你生日快乐，所念皆星河，所愿皆成真，岁岁平岁岁安，岁岁平安，希望你能够喜欢'.split('，')
+            const text = '3，2，1，HI,奚sir，祝你生日快乐，所念皆星河，所愿皆成真，岁岁平安，昭昭如愿，希望你能够喜欢'.split('，')
             for(let i=0; i<text.length; i++) {
                 await awaitSendText(text[i], 150, i === 0 ? 100 : 40)
             }
@@ -157,4 +157,5 @@
   });
 </script>
 </body>
+
 </html>
