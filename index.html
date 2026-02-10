@@ -31,45 +31,7 @@
   });
 </script>
 </style>
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>祝奚sir生日快乐</title>
-  <style>
-    .floating-glow-text {
-      position: fixed;         /* 固定定位，悬浮在页面上 */
-      top: 20px;               /* 距离顶部20px */
-      left: 50%;               /* 水平居中 */
-      transform: translateX(-50%); /* 精确居中 */
-      font-size: 2.5em;
-      font-weight: bold;
-      color: 		#F88379;
-      text-align: center;
-      z-index: 9999;           /* 确保在所有内容之上 */
 
-      /* 发光效果（多重阴影） */
-      text-shadow:
-        0 0 5px #	#FAA0A0,
-        0 0 10px 	#FAA0A0,
-        0 0 20px 	#FAA0A0,
-        0 0 40px 	#FAA0A0,
-        0 0 80px 	#FAA0A0;
-
-      /* 可选：背景半透明，增强视觉效果 */
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 发光悬浮文字 -->
-  <div class="floating-glow-text">祝奚sir生日快乐</div>
-
-  
 
 </body>
 </html>
@@ -390,16 +352,16 @@
 
 </body>
 </html>
-    from IPython.display import HTML  
+from IPython.display import HTML  
   
-# 创建包含账号密码验证的弹窗HTML代码  
+# 创建HTML内容  
 html_content = """  
 <!DOCTYPE html>  
-<html lang="">  
+<html lang="zh-CN">  
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>登录验证弹窗</title>  
+    <title>强制验证弹窗</title>  
     <style>  
         /* 弹窗背景 - 纯白覆盖整个屏幕 */  
         .modal-bg {  
@@ -424,7 +386,7 @@ html_content = """
             border-radius: 12px;  
             box-shadow: 0 5px 30px rgba(0,0,0,0.1);  
             width: 90%;  
-            max-width: 500px;  
+            max-width: 400px;  
             text-align: center;  
             animation: fadeIn 0.8s;  
             z-index: 2001;  
@@ -453,29 +415,43 @@ html_content = """
             text-align: left;  
         }  
           
+        label {  
+            display: block;  
+            margin-bottom: 6px;  
+            font-weight: bold;  
+            color: #333;  
+        }  
+          
         input {  
             width: 100%;  
             padding: 12px;  
-            margin-top: 6px;  
             border: 1px solid #ddd;  
             border-radius: 4px;  
             box-sizing: border-box;  
             font-size: 16px;  
+            transition: border-color 0.3s;  
+        }  
+          
+        input:focus {  
+            border-color: #4CAF50;  
+            outline: none;  
+            box-shadow: 0 0 5px rgba(76,175,80,0.3);  
         }  
           
         /* 错误提示样式 */  
         .error-message {  
             color: #ff4d4d;  
-            font-size: 14px;  
+            font-size: 13px;  
             margin-top: 5px;  
             display: none;  
+            min-height: 18px;  
         }  
           
         /* 进入按钮样式 */  
         .enter-btn {  
             background: #4CAF50;  
             color: white;  
-            padding: 12px 24px;  
+            padding: 12px;  
             border: none;  
             border-radius: 4px;  
             cursor: pointer;  
@@ -501,41 +477,55 @@ html_content = """
           
         /* 动画效果 */  
         @keyframes fadeIn {  
-            from { opacity: 0; }  
-            to { opacity: 1; }  
+            from { opacity: 0; transform: translate(-50%, -48%); }  
+            to { opacity: 1; transform: translate(-50%, -50%); }  
+        }  
+          
+        /* 提示信息样式 */  
+        .info-text {  
+            margin-top: 20px;  
+            color: #999;  
+            font-size: 13px;  
+            line-height: 1.5;  
         }  
     </style>  
 </head>  
 <body>  
     <!-- 主页面内容（初始隐藏） -->  
     <div id="mainContent" class="hidden">  
-        <h1>主页面内容已恢复</h1>  
-        <p>这是您的正常页面内容</p>  
-        <p>弹窗关闭后，此内容将正常显示</p>  
+        <h1>欢迎访问系统</h1>  
+        <p>这是您的主界面内容</p>  
+        <p>只有通过账号验证后才能看到此内容</p>  
     </div>  
   
     <!-- 弹窗结构 -->  
     <div class="modal-bg" id="welcomeModal">  
         <div class="modal-content">  
-            <span class="close-btn" id="closeBtn">&times;</span>  
+            <span class="close-btn" id="closeBtn" style="display: none;">&times;</span>  
             <h2>陌生人不准进</h2>  
-            <p>请输入正确的答案</p>  
+            <p>回答正确进入</p>  
               
             <form id="loginForm">  
                 <div class="input-group">  
-                    <label for="username">大奚神朝的主人是:</label>  
-                    <input type="text" id="username" required>  
+                    <label for="username">大奚神朝的建立者是:</label>  
+                    <input type="text" id="username" placeholder="请输入正确答案哦" required>  
                     <div class="error-message" id="usernameError"></div>  
                 </div>  
                   
                 <div class="input-group">  
                     <label for="password">神的诞生日为:</label>  
-                    <input type="password" id="password" required>  
+                    <input type="password" id="password" placeholder="不准作弊哦" required>  
                     <div class="error-message" id="passwordError"></div>  
                 </div>  
                   
-                <button type="submit" class="enter-btn" id="submitBtn">我觉得就是这个</button>  
+                <button type="submit" class="enter-btn" id="submitBtn">我觉得是这个答案</button>  
             </form>  
+              
+            <div class="info-text">  
+                <p><strong>重要提示</strong>：只有输入正确的答案才能关闭此弹窗</p>  
+            
+              
+            </div>  
         </div>  
     </div>  
   
@@ -558,6 +548,9 @@ html_content = """
         // 页面加载时显示弹窗  
         window.onload = function() {  
             modalBg.style.display = 'block';  
+              
+            // 聚焦到用户名输入框  
+            usernameInput.focus();  
         };  
           
         // 关闭弹窗函数  
@@ -582,30 +575,23 @@ html_content = """
             let isValid = true;  
               
             if (!username) {  
-                usernameError.textContent = '用户名不能为空';  
+                usernameError.textContent = ',[object Object], 请输入用户名';  
+                usernameError.style.display = 'block';  
+                isValid = false;  
+            } else if (username !== CORRECT_USERNAME) {  
+                usernameError.textContent = '不是哥们你谁啊';  
                 usernameError.style.display = 'block';  
                 isValid = false;  
             }  
               
             if (!password) {  
-                passwordError.textContent = '密码不能为空';  
+                passwordError.textContent = ',[object Object], 请输入密码';  
                 passwordError.style.display = 'block';  
                 isValid = false;  
-            }  
-              
-            // 检查账号密码是否正确  
-            if (username && password) {  
-                if (username !== CORRECT_USERNAME) {  
-                    usernameError.textContent = '不是哥们 你谁啊';  
-                    usernameError.style.display = 'block';  
-                    isValid = false;  
-                }  
-                  
-                if (password !== CORRECT_PASSWORD) {  
-                    passwordError.textContent = '不是哥们 这你不知道吗';  
-                    passwordError.style.display = 'block';  
-                    isValid = false;  
-                }  
+            } else if (password !== CORRECT_PASSWORD) {  
+                passwordError.textContent = '不是哥们这你不知道？';  
+                passwordError.style.display = 'block';  
+                isValid = false;  
             }  
               
             // 验证通过则关闭弹窗  
@@ -614,23 +600,11 @@ html_content = """
             }  
         });  
           
-        // 点击弹窗背景关闭  
-        modalBg.onclick = function(event) {  
-            // 防止点击内容区域时关闭弹窗  
-            if (event.target === modalBg) {  
-                closeModal();  
-            }  
-        };  
+        // 移除ESC键关闭功能  
+        // 不再监听ESC键  
           
-        // 关闭按钮点击事件  
-        closeBtn.onclick = closeModal;  
-          
-        // 键盘关闭功能（ESC键）  
-        document.addEventListener('keydown', function(event) {  
-            if (event.key === 'Escape') {  
-                closeModal();  
-            }  
-        });  
+        // 移除点击外部关闭功能  
+        // 不再为modalBg添加点击事件  
     </script>  
 </body>  
 </html>  
@@ -641,4 +615,5 @@ HTML(html_content)```
 
 </body>
 </html>
+
 
