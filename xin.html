@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>奚sir永远开心！！！</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .envelope-container {
+      position: relative;
+      width: 800px;
+      height: 400px;
+      perspective: 1000px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .envelope {
+      width: 100%;
+      height: 100%;
+      background: #d44a7e;
+      position: relative;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 1s ease;
+      transform-style: preserve-3d;
+    }
+
+    .envelope-top {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top right, #f8a5c2, #d44a7e);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      z-index: 2;
+      transition: transform 1s ease;
+    }
+
+    .letter {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fffbe6;
+      padding: 40px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.8s ease;
+      z-index: 1;
+      font-size: 18px;
+      color: #333;
+      text-align: center;
+      overflow-y: auto;
+    }
+
+    .envelope.open .envelope-top {
+      transform: rotateX(-180deg);
+      transform-origin: top;
+    }
+
+    .envelope.open .letter {
+      top: 0;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .open-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 14px 28px;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 150, 158, 0.4);
+      z-index: 999;
+    }
+
+    .open-button.hide {
+      display: none;
+    }
+
+    .birthday-text {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 22px;
+      color: #ff6f91;
+      text-align: center;
+      text-shadow: 0 0 10px #ff6f91, 0 0 20px #ff6f91;
+      animation: glow 1.5s infinite alternate;
+      z-index: 1;
+    }
+
+    .envelope.open ~ .birthday-text {
+      display: none;
+    }
+
+    &#64;keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff6f91, 0 0 20px #ff6f91;
+      }
+      to {
+        text-shadow: 0 0 20px #ff6f91, 0 0 30px #ff6f91;
+      }
+    }
+
+    .jump-button {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: white;
+      border: none;
+      border-radius: 35px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 150, 158, 0.4);
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.5s ease;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .jump-button.show {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="envelope-container" onclick="openEnvelope()">
+    <div class="envelope" id="envelope">
+      <div class="envelope-top"></div>
+      <div class="letter" id="letterContent">
+      
+        To: 奚Sir：<br><br>Hi 奚sir，见字如唔 展信舒颜<br>  今天，是属于你的节日——空气里飘着蛋糕的甜香，云朵为你铺开万里晴空，连风都放轻了脚步
+，怕惊扰了这一天的温柔。这是我陪你度过的第一个生日，在给你写这封信之前，我时常在脑海里酝酿着很多话想对你说，不时又在计较斟酌。<br><br>   
+冬天是个不太浪漫的季节，人会变得笨重，当人不得不顺着寒冷。向前迈进时，思绪就被轻易地滞留在了某件事无法被彻底遗忘的瞬间。记得之前彻夜长谈中你下意识的关心散发出的人格魅力
+，也记得在短短的几个月之内我们一起度过各种开心与不开心的每个时刻，只要是待在你的身边大家总是伴随着放松与开心。<br><br>  我嘴笨不太会说话，但是我能记得你对我的好，不知道在你看见这封信的时候是白天还是夜晚
+，也不知道你是否有好好吃饭，其实你很厉害也很漂亮，你三观正，有教养，性格也好，清醒又独立。所以你不必掩盖自己的价值，不必太敏感，不必太焦虑，去做真实的自己就好。<br><br>   
+我希望你活成自己喜欢的样子，也希望你能在仅有一次的青春里活得炙热且洒脱，同时也祝我们能在乱七八糟的生活里找到属于自己的那份快乐。<br><br>   
+其实我现在蛮崩溃的，因为以前也没有接触过关于网页的制作，看每一条代码都宛如天书一般哈哈哈，每一条代码都要笨拙的去学习去理解去到处查找，想给你一个独一无二的礼物。既然话都讲到这里了 那就祝全世界最好的奚sir生日快乐！愿你今日无碍，
+明日无忧，岁岁年年，万事皆宜。
+   <br>    —— 杨耕 💖
+      </div>
+      <button class="open-button" id="openButton">开启信封</button>
+    </div>
+    <div class="birthday-text">祝奚Sir生日快乐 天天开心</div>
+  </div>
+
+  <!-- 跳转按钮 -->
+  <button class="jump-button" id="jumpButton" onclick="goNextPage()">看烟花喽</button>
+
+  <script>
+    function openEnvelope() {
+      const envelope = document.getElementById('envelope');
+      const openButton = document.getElementById('openButton');
+      const jumpButton = document.getElementById('jumpButton');
+
+      envelope.classList.add('open');
+      openButton.classList.add('hide');
+
+      // 显示跳转按钮
+      setTimeout(() => {
+        jumpButton.classList.add('show');
+      }, 500);
+    }
+
+    function goNextPage() {
+      window.location.href = "yh.html"; // 修改为你想跳转的页面
+    }
+  </script>
+<!-- 全局音频播放器 -->
+<audio id="global-audio" src="xin.mp3" loop></audio>
+
+<!-- 控制音频的脚本 -->
+<script>
+  // 页面加载时尝试继续播放
+  window.addEventListener('load', function () {
+    var audio = document.getElementById('global-audio');
+    audio.volume = 0.3; // 设置音量（0 ~ 1）
+    audio.play().catch(function () {
+      // 如果自动播放失败，等待用户第一次点击后再播放
+      document.addEventListener('click', function () {
+        audio.play();
+      }, { once: true });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>祝奚sir平平安安</title>
+  <style>
+    .button {
+      position: absolute;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      white-space: nowrap;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .button.active {
+      background-color: #ff9800; /* 高亮颜色 */
+    }
+
+    .button-container {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      height: 600px;
+      margin: 0 auto;
+      border: 1px dashed #ccc; /* 可选：显示容器边框方便定位 */
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+    }
+.button-container {
+  background-image: url('srkl.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+  </style>
+</head>
+<div id="particles-js"></div>
+
+<style>
+  #particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, #ffeef2, #e0f7fa);
+    z-index: -1;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 80 },
+      color: { value: "#ff99bb" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5 },
+      size: { value: 3 },
+      line_linked: { enable: true, distance: 150, color: "#ff99bb", opacity: 0.3, width: 1 },
+      move: { enable: true, speed: 1 }
+    },
+    interactivity: {
+      events: { onhover: { enable: true, mode: "repulse" } }
+    }
+  });
+</script>
+<body>
+
+  <style>
+  .glow-text {
+    font-size: 2.5em;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 5px #ff00cc, 0 0 10px #ff00cc, 0 0 20px #ff00cc;
+  }
+</style>
+
+<h1 class="glow-text">祝奚sir永远开心！！！</h1>
+
+  <div class="button-container">
+    <!-- 每个按钮都使用 style 设置 top 和 left 来自由定位 -->
+    <button class="button" style="top: 190px; left: 420px;" onclick="playAudio('yg.mp3', this)">杨耕</button>
+    <button class="button" style="top: 110px; left: 300px;" onclick="playAudio('ty.mp3', this)">唐尧</button>
+    <button class="button" style="top: 190px; left: 200px;" onclick="playAudio('ll.mp3', this)">丽丽</button>
+    <button class="button" style="top: 290px; left: 220px;" onclick="playAudio('tt.mp3', this)">图图</button>
+    <button class="button" style="top: 450px; left: 350px;" onclick="playAudio('ft.mp3', this)">饭团</button>
+    <button class="button" style="top: 370px; left: 290px;" onclick="playAudio('sc.mp3', this)">孙承</button>
+
+    <button class="button" style="top: 110px; left: 550px;" onclick="playAudio('fhy.mp3', this)">范航踊</button>
+    <button class="button" style="top: 190px; left: 650px;" onclick="playAudio('lwl.mp3', this)">刘文龙</button>
+    <button class="button" style="top: 500px; left: 430px;" onclick="playAudio('ljy.mp3', this)">李嘉一</button>
+    <button class="button" style="top: 290px; left: 630px;" onclick="playAudio('cyx.mp3', this)">陈语馨</button>
+    <button class="button" style="top: 370px; left: 590px;" onclick="playAudio('gtq.mp3', this)">光头强</button>
+    <button class="button" style="top: 450px; left: 520px;" onclick="playAudio('xh.mp3', this)">小豪</button>
+  </div>
+
+  <div style="text-align:center; margin-top:20px;">
+    <button class="button" style="top: 600px; left: 500px;" onclick="pauseAudio()">⏸ 暂停播放</button>
+<!-- 我要看会烟花 按钮 -->
+<button class="button" style="top: 600px; left: 1200px;" onclick="location.href='xin.html'">前往下一页</button>
+  </div>
+
+  <audio id="audioPlayer" controls style="display:none;">
+    <source id="audioSource" src="" type="audio/mpeg">
+    您的浏览器不支持音频播放。
+  </audio>
+
+  <script>
+    const audioPlayer = document.getElementById("audioPlayer");
+    const audioSource = document.getElementById("audioSource");
+
+    let currentAudio = null;
+    let currentButton = null;
+
+    function playAudio(file, btn) {
+      if (currentAudio && currentAudio !== file) {
+        audioPlayer.pause();
+      }
+
+      audioSource.src = file;
+      audioPlayer.load();
+      audioPlayer.play();
+      currentAudio = file;
+
+      if (currentButton) {
+        currentButton.classList.remove("active");
+      }
+
+      btn.classList.add("active");
+      currentButton = btn;
+    }
+
+    function pauseAudio() {
+      audioPlayer.pause();
+      if (currentButton) {
+        currentButton.classList.remove("active");
+      }
+      currentAudio = null;
+      currentButton = null;
+    }
+
+    // 播放结束自动取消高亮
+    audioPlayer.addEventListener("ended", () => {
+      if (currentButton) {
+        currentButton.classList.remove("active");
+      }
+      currentAudio = null;
+      currentButton = null;
+    });
+  </script>
+
+</body>
+</html>
